@@ -1,4 +1,4 @@
-package main
+package hangulmealy
 
 func idxOfRune(slice []rune, val rune) int {
 	for i, e := range slice {

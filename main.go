@@ -1,4 +1,4 @@
-package main
+package hangulmealy
 
 import (
 	"flag"
@@ -51,7 +51,7 @@ func restoreStty() {
 func main() {
 	flag.Parse()
 
-	var mealy, e = makeHangulMealy(*choPriorityFlag)
+	var mealy, e = MakeHangulMealy(*choPriorityFlag)
 	if e != nil {
 		fmt.Println(e.Error())
 		return

@@ -1,4 +1,4 @@
-package main
+package hangulmealy
 
 var cho, jung, jong = []rune{'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'},
 	[]rune{'ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'},
@@ -193,7 +193,7 @@ func makeJongProirityPi() map[string]PiFunc {
 	return Pi
 }
 
-func makeHangulMealy(choPriority bool) (*Mealy, error) {
+func MakeHangulMealy(choPriority bool) (*Mealy, error) {
 	var Q []string = []string{"S", "V", "O", "U", "A", "I", "K", "N", "R", "L1", "L2"}
 
 	v := []rune{'ㅏ', 'ㅑ', 'ㅓ', 'ㅕ', 'ㅗ', 'ㅛ', 'ㅜ', 'ㅠ', 'ㅡ', 'ㅣ', 'ㅐ', 'ㅒ', 'ㅔ', 'ㅖ'}

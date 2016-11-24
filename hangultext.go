@@ -1,4 +1,4 @@
-package main
+package hangulmealy
 
 type HangulText struct {
 	final string
