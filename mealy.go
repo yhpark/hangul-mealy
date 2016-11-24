@@ -62,7 +62,7 @@ func (mealy *Mealy) RunByRune(r rune) error {
 		} else {
 			mealy.Pi[findPi(mealy.q, r)](mealy.text, r)
 
-			if *verboseFlag {
+			if verboseFlag {
 				fmt.Println("c:", string(r), "pi:", findPi(mealy.q, r), "q:", mealy.Q[mealy.q0], "ins:", mealy.text.ins)
 			}
 
@@ -73,7 +73,7 @@ func (mealy *Mealy) RunByRune(r rune) error {
 
 	mealy.Pi[findPi(mealy.q, r)](mealy.text, r)
 
-	if *verboseFlag {
+	if verboseFlag {
 		fmt.Println("c:", string(r), "pi:", findPi(mealy.q, r), "q:", mealy.Q[mealy.q], "ins:", mealy.text.ins)
 	}
 
@@ -85,6 +85,17 @@ func (mealy *Mealy) RunByRune(r rune) error {
 func (mealy *Mealy) Run(s string) error {
 	for _, c := range s {
 		e := mealy.RunByRune(c)
+		if e != nil {
+			return e
+		}
+	}
+
+	return nil
+}
+
+func (mealy *Mealy) RunEng(s string) error {
+	for _, c := range s {
+		e := mealy.RunByRune(engRuneToKorRune(c))
 		if e != nil {
 			return e
 		}

@@ -34,8 +34,7 @@ loop:
 	return c
 }
 
-func engByteToKorRune(b byte) rune {
-	r := rune(b)
+func engRuneToKorRune(r rune) rune {
 	engKorMap := map[rune]rune{
 		'a': 'ㅁ', 'A': 'ㅁ',
 		'b': 'ㅠ', 'B': 'ㅠ',

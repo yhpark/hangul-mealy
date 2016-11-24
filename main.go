@@ -9,7 +9,7 @@ import (
 	"runtime"
 )
 
-var verboseFlag, choPriorityFlag = flag.Bool("v", false, "verbose"), flag.Bool("c", false, "cho priority (초성 우선)")
+var verboseFlag, choPriorityFlag bool
 
 func readyStty() {
 	restoreOnSignal := func() {
@@ -49,9 +49,10 @@ func restoreStty() {
 }
 
 func main() {
+	verboseFlag, choPriorityFlag = *flag.Bool("v", false, "verbose"), *flag.Bool("c", false, "cho priority (초성 우선)")
 	flag.Parse()
 
-	var mealy, e = MakeHangulMealy(*choPriorityFlag)
+	var mealy, e = MakeHangulMealy(choPriorityFlag)
 	if e != nil {
 		fmt.Println(e.Error())
 		return
@@ -69,7 +70,7 @@ func main() {
 			continue
 		}
 
-		e := mealy.RunByRune(engByteToKorRune(b[0]))
+		e := mealy.RunByRune(engRuneToKorRune(rune(b[0])))
 		if e != nil {
 			fmt.Println("Error - ", e)
 		}
